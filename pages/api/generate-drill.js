@@ -1,4 +1,3 @@
-// pages/api/generate-drill.js
 import OpenAI from 'openai';
 
 const openai = new OpenAI({
@@ -18,11 +17,11 @@ export default async function handler(req, res) {
 
   try {
     const prompt = `
-You are a certified swim instructor creating fun, safe drills for ${level}.
+You are a certified swim instructor creating engaging, safe drills for ${level}.
 Skills to teach: ${skills.join(', ')}
 Must include: ${mustSees.join(', ')}
 
-For each skill, suggest ONE engaging drill.
+For each skill, suggest ONE fun, age-appropriate drill.
 Format: "🎯 Drill Name: Explanation"
 Do not repeat drills.`;
 

@@ -6,67 +6,37 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [editingLessonIndex, setEditingLessonIndex] = useState(null);
   const [editingSkills, setEditingSkills] = useState([]);
+  const [lessonData, setLessonData] = useState({});
 
-  // Cleaned lesson data – only 10 weeks per level
-  const initialLessonData = {
-    parentAndTot1: Array.from({ length: 10 }, (_, i) => ({
-      week: i + 1,
-      skills: [
-        'Enter and exit the water safely with tot',
-        'Hold tot on front, eye contact',
-        'Hold tot on back, head and back support',
-        'Front float (face out) – assisted',
-        'Back float (assisted)',
-        'Arms: splashing, reaching, paddling, on front and back',
-        'Legs: tickling, splashing, kicking, on front and back',
-        'Water Smart message: Swim to Survive',
-      ],
-      notes: '',
-      aiDrills: [],
-    })),
-    parentAndTot2: Array.from({ length: 10 }, (_, i) => ({
-      week: i + 1,
-      skills: [
-        'Entry from sitting position (assisted)',
-        'Exit the water (assisted)',
-        'Blow bubbles on and in water',
-        'Face wet and in water',
-        'Front float (face in) – assisted',
-        'Back float (assisted)',
-        'Kicking on front (assisted)',
-        'Kicking on back (assisted)',
-        'Water Smart message: Within Arms’ Reach',
-        'Water Smart message: Wear a Lifejacket',
-      ],
-      notes: '',
-      aiDrills: [],
-    })),
-    swimmer1: Array.from({ length: 10 }, (_, i) => ({
-      week: i + 1,
-      skills: [
-        'Enter and exit shallow water',
-        'Hold breath underwater 5 sec.',
-        'Submerge and exhale 5 times',
-        'Open eyes underwater',
-        'Float on front 5 sec.',
-        'Float on back 5 sec.',
-        'Glide on front 3 m',
-        'Glide on back 3 m',
-        'Water Smart message: Swim with a Buddy',
-      ],
-      notes: '',
-      aiDrills: [],
-    })),
-  };
-
-  const [lessonData, setLessonData] = useState(() => {
-    const saved = localStorage.getItem('swimLessonData');
-    return saved ? JSON.parse(saved) : initialLessonData;
-  });
-
+  // Initialize lesson data after mount
   useEffect(() => {
-    localStorage.setItem('swimLessonData', JSON.stringify(lessonData));
+    try {
+      const saved = localStorage.getItem('swimLessonData');
+      if (saved) {
+        setLessonData(JSON.parse(saved));
+      } else {
+        setLessonData(initialLessonData);
+      }
+    } catch (error) {
+      console.error('Failed to load ', error);
+      setLessonData(initialLessonData);
+    }
+  }, []);
+
+  // Save to localStorage
+  useEffect(() => {
+    if (Object.keys(lessonData).length > 0) {
+      try {
+        localStorage.setItem('swimLessonData', JSON.stringify(lessonData));
+      } catch (error) {
+        console.error('Failed to save ', error);
+      }
+    }
   }, [lessonData]);
+
+  if (Object.keys(lessonData).length === 0) {
+    return <div className="p-6 text-center">Loading...</div>;
+  }
 
   const levelGroups = {
     parentAndTot: {
@@ -125,7 +95,7 @@ export default function App() {
 
   const handleAddLesson = () => {
     if (currentLessons.length >= 10) {
-      alert('Maximum 10 lessons allowed.');
+      alert('Max 10 lessons');
       return;
     }
     const newWeek = currentLessons.length + 1;
@@ -147,8 +117,8 @@ export default function App() {
   };
 
   const handleSaveLesson = () => {
-    const updated = currentLessons.map((lesson, i) =>
-      i === editingLessonIndex ? { ...lesson, skills: [...editingSkills] } : lesson
+    const updated = currentLessons.map((l, i) =>
+      i === editingLessonIndex ? { ...l, skills: [...editingSkills] } : l
     );
     setLessonData({ ...lessonData, [selectedLevel]: updated });
     setEditingLessonIndex(null);
@@ -160,7 +130,7 @@ export default function App() {
 
   const handleRemoveSkill = (skillIndex) => {
     if (editingSkills.length <= 1) {
-      alert('A lesson must have at least one skill.');
+      alert('At least one skill required');
       return;
     }
     setEditingSkills(editingSkills.filter((_, i) => i !== skillIndex));
@@ -171,6 +141,40 @@ export default function App() {
       const updated = currentLessons.filter((_, i) => i !== lessonIndex);
       const renumbered = updated.map((l, i) => ({ ...l, week: i + 1 }));
       setLessonData({ ...lessonData, [selectedLevel]: renumbered });
+    }
+  };
+
+  const handleAIGenerate = async (lessonIndex) => {
+    const lesson = currentLessons[lessonIndex];
+    const levelName = levelGroups[selectedGroup].levels[selectedLevel];
+    const mustSees = [
+      'Always supervise children around water',
+      'Use PFDs when appropriate',
+      'Teach Water Smart messages each class',
+      'Encourage fun and confidence over perfection',
+      'Progress skills gradually based on readiness'
+    ];
+
+    setIsLoading(true);
+    try {
+      const response = await fetch('/api/generate-drill', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ level: levelName, skills: lesson.skills, mustSees }),
+      });
+
+      const data = await response.json();
+      if (data.error) throw new Error(data.error);
+
+      const updatedLessons = currentLessons.map((l, i) =>
+        i === lessonIndex ? { ...l, aiDrills: data.drills } : l
+      );
+
+      setLessonData({ ...lessonData, [selectedLevel]: updatedLessons });
+    } catch (err) {
+      alert('AI failed: ' + err.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -233,40 +237,6 @@ export default function App() {
     link.href = URL.createObjectURL(blob);
     link.download = `${levelGroups[selectedGroup].levels[selectedLevel]}_plan.txt`;
     link.click();
-  };
-
-  const handleAIGenerate = async (lessonIndex) => {
-    const lesson = currentLessons[lessonIndex];
-    const levelName = levelGroups[selectedGroup].levels[selectedLevel];
-    const mustSees = [
-      'Always supervise children around water',
-      'Use PFDs when appropriate',
-      'Teach Water Smart messages each class',
-      'Encourage fun and confidence over perfection',
-      'Progress skills gradually based on readiness'
-    ];
-
-    setIsLoading(true);
-    try {
-      const response = await fetch('/api/generate-drill', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ level: levelName, skills: lesson.skills, mustSees }),
-      });
-
-      const data = await response.json();
-      if (data.error) throw new Error(data.error);
-
-      const updatedLessons = currentLessons.map((l, i) =>
-        i === lessonIndex ? { ...l, aiDrills: data.drills } : l
-      );
-
-      setLessonData({ ...lessonData, [selectedLevel]: updatedLessons });
-    } catch (err) {
-      alert('AI failed: ' + err.message);
-    } finally {
-      setIsLoading(false);
-    }
   };
 
   return (
@@ -427,3 +397,173 @@ export default function App() {
     </div>
   );
 }
+
+// Full initial lesson data for all levels
+const initialLessonData = {
+  parentAndTot1: Array.from({ length: 10 }, (_, i) => ({
+    week: i + 1,
+    skills: [
+      'Enter and exit the water safely with tot',
+      'Hold tot on front, eye contact',
+      'Hold tot on back, head and back support',
+      'Front float (face out) – assisted',
+      'Back float (assisted)',
+      'Arms: splashing, reaching, paddling, on front and back',
+      'Legs: tickling, splashing, kicking, on front and back',
+      'Water Smart message: Swim to Survive',
+    ],
+    notes: '',
+    aiDrills: [],
+  })),
+  parentAndTot2: Array.from({ length: 10 }, (_, i) => ({
+    week: i + 1,
+    skills: [
+      'Entry from sitting position (assisted)',
+      'Exit the water (assisted)',
+      'Blow bubbles on and in water',
+      'Face wet and in water',
+      'Front float (face in) – assisted',
+      'Back float (assisted)',
+      'Kicking on front (assisted)',
+      'Kicking on back (assisted)',
+      'Water Smart message: Within Arms’ Reach',
+      'Water Smart message: Wear a Lifejacket',
+    ],
+    notes: '',
+    aiDrills: [],
+  })),
+  parentAndTot3: Array.from({ length: 10 }, (_, i) => ({
+    week: i + 1,
+    skills: [
+      'Entry and submerge from sitting position (assisted)',
+      'Exit the water (unassisted)',
+      'Hold breath underwater (assisted)',
+      'Attempt to open eyes underwater',
+      'Attempt to recover object from bottom',
+      'Standing jump entry, return to edge (assisted)',
+      'Front “starfish” float (assisted)',
+      'Back “starfish” float (assisted)',
+      'Front “pencil” float (assisted)',
+      'Back “pencil” float (assisted)',
+      'Kicking on front (assisted)',
+      'Kicking on back (assisted)',
+      'Underwater passes',
+      'Water Smart message: Swim to Survive',
+    ],
+    notes: '',
+    aiDrills: [],
+  })),
+  preschool1: Array.from({ length: 10 }, (_, i) => ({
+    week: i + 1,
+    skills: [
+      'Enter and exit shallow water (assisted)',
+      'Face in water',
+      'Blow bubbles in water',
+      'Float on front (3 sec.) assisted',
+      'Float on back (3 sec.) assisted',
+      'Safe movement in shallow water wearing PFD',
+      'Glide on front (3 m) assisted',
+      'Glide on back (3 m) assisted',
+      'Water Smart message: Within Arms’ Reach',
+    ],
+    notes: '',
+    aiDrills: [],
+  })),
+  preschool2: Array.from({ length: 10 }, (_, i) => ({
+    week: i + 1,
+    skills: [
+      'Enter and exit shallow water wearing PFD',
+      'Submerge',
+      'Float on front (3 sec.) wearing PFD or with buoyant aid',
+      'Float on back (3 sec.) wearing PFD or with buoyant aid',
+      'Glide on front (3 m) wearing PFD or with buoyant aid',
+      'Glide on back (3 m) wearing PFD or with buoyant aid',
+      'Flutter kick on back with buoyant aid 5 m',
+      'Water Smart message: Wear a Lifejacket',
+    ],
+    notes: '',
+    aiDrills: [],
+  })),
+  swimmer1: Array.from({ length: 10 }, (_, i) => ({
+    week: i + 1,
+    skills: [
+      'Enter and exit shallow water',
+      'Hold breath underwater 5 sec.',
+      'Submerge and exhale 5 times',
+      'Open eyes underwater',
+      'Float on front 5 sec.',
+      'Float on back 5 sec.',
+      'Glide on front 3 m',
+      'Glide on back 3 m',
+      'Water Smart message: Swim with a Buddy',
+    ],
+    notes: '',
+    aiDrills: [],
+  })),
+  swimmer2: Array.from({ length: 10 }, (_, i) => ({
+    week: i + 1,
+    skills: [
+      'Recover object from bottom in chest-deep water',
+      'Flutter kick on front 10 m',
+      'Flutter kick on back 10 m',
+      'Flutter kick on side 10 m',
+      'Front crawl 10 m',
+      'Back crawl 10 m',
+      'Interval training: 4 × 5 m flutter kick with 20 sec. rests',
+    ],
+    notes: '',
+    aiDrills: [],
+  })),
+  swimmer3: Array.from({ length: 10 }, (_, i) => ({
+    week: i + 1,
+    skills: [
+      'Handstand in shallow water',
+      'Flutter kick on back 5 m; reverse direction and flutter kick on front 5 m',
+      'Flutter kick on front 5 m; reverse direction and flutter kick on back 5 m',
+      'Whip kick on back 10 m',
+      'Front crawl 15 m',
+      'Back crawl 15 m',
+    ],
+    notes: '',
+    aiDrills: [],
+  })),
+  swimmer4: Array.from({ length: 10 }, (_, i) => ({
+    week: i + 1,
+    skills: [
+      'Swim underwater 5 m',
+      'Whip kick on front 15 m',
+      'Breaststroke arms drill 15 m',
+      'Front crawl 25 m',
+      'Back crawl 25 m',
+      'Sprint front crawl 25 m',
+    ],
+    notes: '',
+    aiDrills: [],
+  })),
+  swimmer5: Array.from({ length: 10 }, (_, i) => ({
+    week: i + 1,
+    skills: [
+      'Tread water 1 min.',
+      'Stationary eggbeater kick 30 sec.',
+      'Breaststroke 25 m',
+      'Front crawl 50 m',
+      'Back crawl 50 m',
+      'Head-up front crawl 10 m',
+    ],
+    notes: '',
+    aiDrills: [],
+  })),
+  swimmer6: Array.from({ length: 10 }, (_, i) => ({
+    week: i + 1,
+    skills: [
+      'Swim underwater 10 m to recover object',
+      'Eggbeater kick on back 15 m',
+      'Breaststroke 50 m',
+      'Front crawl 100 m',
+      'Back crawl 100 m',
+      'Head-up swim 25 m',
+    ],
+    notes: '',
+    aiDrills: [],
+  })),
+};
