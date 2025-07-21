@@ -1,8 +1,5 @@
 import { useState, useEffect } from 'react';
 
-// ❗ Important: Never commit .env files or expose API keys!
-// Use Vercel Environment Variables: https://vercel.com/docs/projects/environment-variables 
-
 export default function App() {
   const [selectedGroup, setSelectedGroup] = useState('parentAndTot');
   const [selectedLevel, setSelectedLevel] = useState('parentAndTot1');
@@ -10,7 +7,7 @@ export default function App() {
   const [editingLessonIndex, setEditingLessonIndex] = useState(null);
   const [editingSkills, setEditingSkills] = useState([]);
 
-  // Full lesson data structure (cleaned from your paste)
+  // Cleaned lesson data – only 10 weeks per level
   const initialLessonData = {
     parentAndTot1: Array.from({ length: 10 }, (_, i) => ({
       week: i + 1,
@@ -44,59 +41,6 @@ export default function App() {
       notes: '',
       aiDrills: [],
     })),
-    parentAndTot3: Array.from({ length: 10 }, (_, i) => ({
-      week: i + 1,
-      skills: [
-        'Entry and submerge from sitting position (assisted)',
-        'Exit the water (unassisted)',
-        'Hold breath underwater (assisted)',
-        'Attempt to open eyes underwater',
-        'Attempt to recover object from bottom',
-        'Standing jump entry, return to edge (assisted)',
-        'Front “starfish” float (assisted)',
-        'Back “starfish” float (assisted)',
-        'Front “pencil” float (assisted)',
-        'Back “pencil” float (assisted)',
-        'Kicking on front (assisted)',
-        'Kicking on back (assisted)',
-        'Underwater passes',
-        'Water Smart message: Within Arms’ Reach',
-        'Water Smart message: Swim to Survive',
-      ],
-      notes: '',
-      aiDrills: [],
-    })),
-    preschool1: Array.from({ length: 10 }, (_, i) => ({
-      week: i + 1,
-      skills: [
-        'Enter and exit shallow water (assisted)',
-        'Face in water',
-        'Blow bubbles in water',
-        'Float on front (3 sec.) assisted',
-        'Float on back (3 sec.) assisted',
-        'Safe movement in shallow water wearing PFD',
-        'Glide on front (3 m) assisted',
-        'Glide on back (3 m) assisted',
-        'Water Smart message: Within Arms’ Reach',
-      ],
-      notes: '',
-      aiDrills: [],
-    })),
-    preschool2: Array.from({ length: 10 }, (_, i) => ({
-      week: i + 1,
-      skills: [
-        'Enter and exit shallow water wearing PFD',
-        'Submerge',
-        'Float on front (3 sec.) wearing PFD or with buoyant aid',
-        'Float on back (3 sec.) wearing PFD or with buoyant aid',
-        'Glide on front (3 m) wearing PFD or with buoyant aid',
-        'Glide on back (3 m) wearing PFD or with buoyant aid',
-        'Flutter kick on back with buoyant aid 5 m',
-        'Water Smart message: Wear a Lifejacket',
-      ],
-      notes: '',
-      aiDrills: [],
-    })),
     swimmer1: Array.from({ length: 10 }, (_, i) => ({
       week: i + 1,
       skills: [
@@ -109,72 +53,6 @@ export default function App() {
         'Glide on front 3 m',
         'Glide on back 3 m',
         'Water Smart message: Swim with a Buddy',
-      ],
-      notes: '',
-      aiDrills: [],
-    })),
-    swimmer2: Array.from({ length: 10 }, (_, i) => ({
-      week: i + 1,
-      skills: [
-        'Recover object from bottom in chest-deep water',
-        'Flutter kick on front 10 m',
-        'Flutter kick on back 10 m',
-        'Flutter kick on side 10 m',
-        'Front crawl 10 m',
-        'Back crawl 10 m',
-        'Interval training: 4 × 5 m flutter kick with 20 sec. rests',
-      ],
-      notes: '',
-      aiDrills: [],
-    })),
-    swimmer3: Array.from({ length: 10 }, (_, i) => ({
-      week: i + 1,
-      skills: [
-        'Handstand in shallow water',
-        'Flutter kick on back 5 m; reverse direction and flutter kick on front 5 m',
-        'Flutter kick on front 5 m; reverse direction and flutter kick on back 5 m',
-        'Whip kick on back 10 m',
-        'Front crawl 15 m',
-        'Back crawl 15 m',
-      ],
-      notes: '',
-      aiDrills: [],
-    })),
-    swimmer4: Array.from({ length: 10 }, (_, i) => ({
-      week: i + 1,
-      skills: [
-        'Swim underwater 5 m',
-        'Whip kick on front 15 m',
-        'Breaststroke arms drill 15 m',
-        'Front crawl 25 m',
-        'Back crawl 25 m',
-        'Sprint front crawl 25 m',
-      ],
-      notes: '',
-      aiDrills: [],
-    })),
-    swimmer5: Array.from({ length: 10 }, (_, i) => ({
-      week: i + 1,
-      skills: [
-        'Tread water 1 min.',
-        'Stationary eggbeater kick 30 sec.',
-        'Breaststroke 25 m',
-        'Front crawl 50 m',
-        'Back crawl 50 m',
-        'Head-up front crawl 10 m',
-      ],
-      notes: '',
-      aiDrills: [],
-    })),
-    swimmer6: Array.from({ length: 10 }, (_, i) => ({
-      week: i + 1,
-      skills: [
-        'Swim underwater 10 m to recover object',
-        'Eggbeater kick on back 15 m',
-        'Breaststroke 50 m',
-        'Front crawl 100 m',
-        'Back crawl 100 m',
-        'Head-up swim 25 m',
       ],
       notes: '',
       aiDrills: [],
@@ -357,67 +235,35 @@ export default function App() {
     link.click();
   };
 
-  const generateAIDrillFromOpenAI = async (skill, levelName) => {
+  const handleAIGenerate = async (lessonIndex) => {
+    const lesson = currentLessons[lessonIndex];
+    const levelName = levelGroups[selectedGroup].levels[selectedLevel];
     const mustSees = [
-      "Always supervise children around water",
-      "Use PFDs when appropriate",
-      "Teach Water Smart messages each class",
-      "Encourage fun and confidence over perfection",
-      "Progress skills gradually based on readiness"
+      'Always supervise children around water',
+      'Use PFDs when appropriate',
+      'Teach Water Smart messages each class',
+      'Encourage fun and confidence over perfection',
+      'Progress skills gradually based on readiness'
     ];
 
-    const prompt = `
-You are a certified swim instructor creating engaging drills for ${levelName}.
-Skill to teach: "${skill}"
-Must include: ${mustSees.join(', ')}
-
-Create ONE fun, safe, age-appropriate drill.
-Include name and brief explanation.
-Format: "🎯 Drill Name: Explanation"
-Do not use markdown or quotes.`;
-
+    setIsLoading(true);
     try {
-      const response = await fetch('https://api.openai.com/v1/chat/completions ', {
+      const response = await fetch('/api/generate-drill', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
-        },
-        body: JSON.stringify({
-          model: 'gpt-3.5-turbo',
-          messages: [{ role: 'user', content: prompt }],
-          temperature: 0.9,
-          max_tokens: 100,
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ level: levelName, skills: lesson.skills, mustSees }),
       });
 
       const data = await response.json();
-      if (data.error) throw new Error(data.error.message);
-
-      return data.choices[0].message.content.trim();
-    } catch (err) {
-      console.error('OpenAI Error:', err);
-      return `🎯 Backup Drill: Practice ${skill.split(' ')[0]} with fun cues like "spaghetti legs" or "shark fin".`;
-    }
-  };
-
-  const handleAIGenerate = async (lessonIndex) => {
-    setIsLoading(true);
-    const lesson = currentLessons[lessonIndex];
-    const levelName = levelGroups[selectedGroup].levels[selectedLevel];
-
-    try {
-      const drills = await Promise.all(
-        lesson.skills.map(skill => generateAIDrillFromOpenAI(skill, levelName))
-      );
+      if (data.error) throw new Error(data.error);
 
       const updatedLessons = currentLessons.map((l, i) =>
-        i === lessonIndex ? { ...l, aiDrills: drills } : l
+        i === lessonIndex ? { ...l, aiDrills: data.drills } : l
       );
 
       setLessonData({ ...lessonData, [selectedLevel]: updatedLessons });
     } catch (err) {
-      alert('Failed to generate AI drills: ' + err.message);
+      alert('AI failed: ' + err.message);
     } finally {
       setIsLoading(false);
     }
