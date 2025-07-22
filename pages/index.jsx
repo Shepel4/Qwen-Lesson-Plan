@@ -25,222 +25,191 @@ export default function App() {
       notes: '',
       aiDrills: [],
     })),
-    parentAndTot2: Array.from({ length: 10 }, (_, i) => ({
-      week: i + 1,
-      skills: [
-        'Entry from sitting position (assisted)',
-        'Exit the water (assisted)',
-        'Blow bubbles on and in water',
-        'Face wet and in water',
-        'Front float (face in) – assisted',
-        'Back float (assisted)',
-        'Kicking on front (assisted)',
-        'Kicking on back (assisted)',
-        'Water Smart message: Within Arms’ Reach',
-        'Water Smart message: Wear a Lifejacket',
-      ],
-      notes: '',
-      aiDrills: [],
-    })),
-    parentAndTot3: Array.from({ length: 10 }, (_, i) => ({
-      week: i + 1,
-      skills: [
-        'Entry and submerge from sitting position (assisted)',
-        'Exit the water (unassisted)',
-        'Hold breath underwater (assisted)',
-        'Attempt to open eyes underwater',
-        'Attempt to recover object from bottom',
-        'Standing jump entry, return to edge (assisted)',
-        'Front “starfish” float (assisted)',
-        'Back “starfish” float (assisted)',
-        'Front “pencil” float (assisted)',
-        'Back “pencil” float (assisted)',
-        'Kicking on front (assisted)',
-        'Kicking on back (assisted)',
-        'Underwater passes',
-        'Water Smart message: Within Arms’ Reach',
-        'Water Smart message: Swim to Survive',
-      ],
-      notes: '',
-      aiDrills: [],
-    })),
-    preschool1: Array.from({ length: 10 }, (_, i) => ({
-      week: i + 1,
-      skills: [
-        'Enter and exit shallow water (assisted)',
-        'Face in water',
-        'Blow bubbles in water',
-        'Float on front (3 sec.) assisted',
-        'Float on back (3 sec.) assisted',
-        'Safe movement in shallow water wearing PFD',
-        'Glide on front (3 m) assisted',
-        'Glide on back (3 m) assisted',
-        'Water Smart message: Within Arms’ Reach',
-      ],
-      notes: '',
-      aiDrills: [],
-    })),
-    preschool2: Array.from({ length: 10 }, (_, i) => ({
-      week: i + 1,
-      skills: [
-        'Enter and exit shallow water wearing PFD',
-        'Submerge',
-        'Float on front (3 sec.) wearing PFD or with buoyant aid',
-        'Float on back (3 sec.) wearing PFD or with buoyant aid',
-        'Glide on front (3 m) wearing PFD or with buoyant aid',
-        'Glide on back (3 m) wearing PFD or with buoyant aid',
-        'Flutter kick on back with buoyant aid 5 m',
-        'Water Smart message: Wear a Lifejacket',
-      ],
-      notes: '',
-      aiDrills: [],
-    })),
-    preschool3: Array.from({ length: 10 }, (_, i) => ({
-      week: i + 1,
-      skills: [
-        'Hold breath underwater 3 sec.',
-        'Submerge and exhale 5 times',
-        'Recover object from bottom in waist-deep water',
-        'Float on front 5 sec.',
-        'Float on back 5 sec.',
-        'Roll laterally front to back and back to front',
-        'Glide on front 3 m',
-        'Glide on back 3 m',
-        'Flutter kick on back 5 m',
-        'Flutter kick on front 5 m',
-        'Water Smart message: Within Arms’ Reach',
-        ...(i >= 2 ? ['Water Smart message: Wear a Lifejacket'] : [])
-      ],
-      notes: '',
-      aiDrills: [],
-    })),
-    preschool4: Array.from({ length: 10 }, (_, i) => ({
-      week: i + 1,
-      skills: [
-        'Open eyes underwater',
-        'Recover object from bottom in chest-deep water',
-        'Front float; roll to back; swim 5 m',
-        'Glide on side 3 m',
-        'Flutter kick on front 7 m',
-        'Flutter kick on back 7 m',
-        'Flutter kick on side 5 m',
-        'Water Smart message: Within Arms’ Reach',
-        ...(i >= 1 ? ['Tread water 10 sec. wearing PFD'] : []),
-        ...(i >= 3 ? ['Stride entry into deep water'] : []),
-        ...(i >= 5 ? ['Front crawl 5 m wearing PFD'] : [])
-      ],
-      notes: '',
-      aiDrills: [],
-    })),
-    preschool5: Array.from({ length: 10 }, (_, i) => ({
-      week: i + 1,
-      skills: [
-        'Jump into deep water, return and exit',
-        'Sideways entry',
-        'Tread water 10 sec. wearing PFD',
-        'Open eyes underwater',
-        'Recover object from bottom in chest-deep water',
-        'Wearing a PFD, sideways entry into deep water; tread 15 sec.; swim/kick 5 m',
-        'Front float; roll to back; swim 5 m',
-        'Glide on side 3 m',
-        'Flutter kick on side 5 m',
-        'Front crawl 5 m wearing PFD',
-        'Water Smart message: Within Arms’ Reach',
-        ...(i >= 4 ? ['Back float; roll to front; swim 3 m'] : []),
-        ...(i >= 6 ? ['Breaststroke arms drill 5 m'] : [])
-      ],
-      notes: '',
-      aiDrills: [],
-    })),
-    swimmer1: Array.from({ length: 10 }, (_, i) => ({
-      week: i + 1,
-      skills: [
-        'Enter and exit shallow water',
-        'Hold breath underwater 5 sec.',
-        'Submerge and exhale 5 times',
-        'Open eyes underwater',
-        'Float on front 5 sec.',
-        'Float on back 5 sec.',
-        'Glide on front 3 m',
-        'Glide on back 3 m',
-        'Water Smart message: Swim with a Buddy',
-      ],
-      notes: '',
-      aiDrills: [],
-    })),
-    swimmer2: Array.from({ length: 10 }, (_, i) => ({
-      week: i + 1,
-      skills: [
-        'Recover object from bottom in chest-deep water',
-        'Flutter kick on front 10 m',
-        'Flutter kick on back 10 m',
-        'Flutter kick on side 10 m',
-        'Front crawl 10 m',
-        'Back crawl 10 m',
-        'Interval training: 4 × 5 m flutter kick with 20 sec. rests',
-      ],
-      notes: '',
-      aiDrills: [],
-    })),
-    swimmer3: Array.from({ length: 10 }, (_, i) => ({
-      week: i + 1,
-      skills: [
-        'Handstand in shallow water',
-        'Flutter kick on back 5 m; reverse direction and flutter kick on front 5 m',
-        'Flutter kick on front 5 m; reverse direction and flutter kick on back 5 m',
-        'Whip kick on back 10 m',
-        'Front crawl 15 m',
-        'Back crawl 15 m',
-      ],
-      notes: '',
-      aiDrills: [],
-    })),
-    swimmer4: Array.from({ length: 10 }, (_, i) => ({
-      week: i + 1,
-      skills: [
-        'Swim underwater 5 m',
-        'Whip kick on front 15 m',
-        'Breaststroke arms drill 15 m',
-        'Front crawl 25 m',
-        'Back crawl 25 m',
-        'Sprint front crawl 25 m',
-      ],
-      notes: '',
-      aiDrills: [],
-    })),
-    swimmer5: Array.from({ length: 10 }, (_, i) => ({
-      week: i + 1,
-      skills: [
-        'Tread water 1 min.',
-        'Stationary eggbeater kick 30 sec.',
-        'Breaststroke 25 m',
-        'Front crawl 50 m',
-        'Back crawl 50 m',
-        'Head-up front crawl 10 m',
-      ],
-      notes: '',
-      aiDrills: [],
-    })),
-    swimmer6: Array.from({ length: 10 }, (_, i) => ({
-      week: i + 1,
-      skills: [
-        'Swim underwater 10 m to recover object',
-        'Eggbeater kick on back 15 m',
-        'Breaststroke 50 m',
-        'Front crawl 100 m',
-        'Back crawl 100 m',
-        'Head-up swim 25 m',
-      ],
-      notes: '',
-      aiDrills: [],
-    })),
+
+    parentAndTot2: [
+      { week: 1, skills: ['Entry from sitting position (assisted)', 'Exit the water (assisted)', 'Blow bubbles on and in water', 'Face wet and in water', 'Front float (face in) – assisted', 'Back float (assisted)', 'Kicking on front (assisted)', 'Kicking on back (assisted)', 'Water Smart message: Within Arms’ Reach', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
+      { week: 2, skills: ['Exit the water (assisted)', 'Blow bubbles on and in water', 'Face wet and in water', 'Entry from sitting position wearing PFD and return (assisted)', 'Front float (face in) – assisted', 'Back float (assisted)', 'Kicking on front (assisted)', 'Kicking on back (assisted)', 'Water Smart message: Within Arms’ Reach', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
+      { week: 3, skills: ['Entry from sitting position (assisted)', 'Exit the water (assisted)', 'Blow bubbles on and in water', 'Attempt to recover object below surface', 'Front float (face in) – assisted', 'Back float (assisted)', 'Kicking on front (assisted)', 'Kicking on back (assisted)', 'Surface passes with continuous contact', 'Water Smart message: Swim to Survive'], notes: '', aiDrills: [] },
+      { week: 4, skills: ['Entry from sitting position (assisted)', 'Exit the water (assisted)', 'Blow bubbles on and in water', 'Attempt to recover object below surface', 'Entry from sitting position wearing PFD and return (assisted)', 'Front float (face in) – assisted', 'Back float (assisted)', 'Kicking on front (assisted)', 'Kicking on back (assisted)', 'Surface passes with continuous contact', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
+      { week: 5, skills: ['Entry from sitting position (assisted)', 'Exit the water (assisted)', 'Blow bubbles on and in water', 'Face wet and in water', 'Attempt to recover object below surface', 'Entry from sitting position wearing PFD and return (assisted)', 'Front float (face in) – assisted', 'Back float (assisted)', 'Kicking on front (assisted)', 'Kicking on back (assisted)', 'Surface passes with continuous contact', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
+      { week: 6, skills: ['Entry from sitting position (assisted)', 'Exit the water (assisted)', 'Blow bubbles on and in water', 'Face wet and in water', 'Attempt to recover object below surface', 'Entry from sitting position wearing PFD and return (assisted)', 'Front float (face in) – assisted', 'Back float (assisted)', 'Kicking on front (assisted)', 'Kicking on back (assisted)', 'Surface passes with continuous contact', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+      { week: 7, skills: ['Entry from sitting position (assisted)', 'Exit the water (assisted)', 'Blow bubbles on and in water', 'Face wet and in water', 'Attempt to recover object below surface', 'Entry from sitting position wearing PFD and return (assisted)', 'Front float (face in) – assisted', 'Back float (assisted)', 'Kicking on front (assisted)', 'Kicking on back (assisted)', 'Surface passes with continuous contact', 'Water Smart message: Swim to Survive'], notes: '', aiDrills: [] },
+      { week: 8, skills: ['Entry from sitting position (assisted)', 'Exit the water (assisted)', 'Blow bubbles on and in water', 'Face wet and in water', 'Attempt to recover object below surface', 'Entry from sitting position wearing PFD and return (assisted)', 'Front float (face in) – assisted', 'Back float (assisted)', 'Kicking on front (assisted)', 'Kicking on back (assisted)', 'Surface passes with continuous contact', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
+      { week: 9, skills: ['Entry from sitting position (assisted)', 'Exit the water (assisted)', 'Blow bubbles on and in water', 'Face wet and in water', 'Attempt to recover object below surface', 'Entry from sitting position wearing PFD and return (assisted)', 'Front float (face in) – assisted', 'Back float (assisted)', 'Kicking on front (assisted)', 'Kicking on back (assisted)', 'Surface passes with continuous contact', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+      { week: 10, skills: ['Entry from sitting position (assisted)', 'Exit the water (assisted)', 'Blow bubbles on and in water', 'Face wet and in water', 'Attempt to recover object below surface', 'Entry from sitting position wearing PFD and return (assisted)', 'Front float (face in) – assisted', 'Back float (assisted)', 'Kicking on front (assisted)', 'Kicking on back (assisted)', 'Surface passes with continuous contact', 'Water Smart message: Swim to Survive'], notes: '', aiDrills: [] },
+    ],
+
+    parentAndTot3: [
+      { week: 1, skills: ['Jump entry (assisted)', 'Exit the water (unassisted)', 'Hold breath underwater (assisted)', 'Attempt to open eyes underwater', 'Attempt to recover object from bottom', 'Standing jump entry, return to edge (assisted)', 'Front “starfish” float (assisted)', 'Back “starfish” float (assisted)', 'Front “pencil” float (assisted)', 'Back “pencil” float (assisted)', 'Kicking on back (assisted)', 'Water Smart message: Swim to Survive'], notes: '', aiDrills: [] },
+      { week: 2, skills: ['Jump entry (assisted)', 'Exit the water (unassisted)', 'Hold breath underwater (assisted)', 'Attempt to open eyes underwater', 'Attempt to recover object from bottom', 'Jump entry and float wearing PFD (assisted)', 'Front “starfish” float (assisted)', 'Back “starfish” float (assisted)', 'Front “pencil” float (assisted)', 'Back “pencil” float (assisted)', 'Kicking on front (assisted)', 'Kicking on back (assisted)', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+      { week: 3, skills: ['Entry and submerge from sitting position (assisted)', 'Exit the water (unassisted)', 'Hold breath underwater (assisted)', 'Attempt to recover object from bottom', 'Standing jump entry, return to edge (assisted)', 'Front “starfish” float (assisted)', 'Back “starfish” float (assisted)', 'Front “pencil” float (assisted)', 'Back “pencil” float (assisted)', 'Kicking on front (assisted)', 'Kicking on back (assisted)', 'Underwater passes', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
+      { week: 4, skills: ['Entry and submerge from sitting position (assisted)', 'Exit the water (unassisted)', 'Hold breath underwater (assisted)', 'Attempt to recover object from bottom', 'Standing jump entry, return to edge (assisted)', 'Front “starfish” float (assisted)', 'Back “starfish” float (assisted)', 'Front “pencil” float (assisted)', 'Back “pencil” float (assisted)', 'Kicking on front (assisted)', 'Kicking on back (assisted)', 'Underwater passes', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+      { week: 5, skills: ['Jump entry (assisted)', 'Exit the water (unassisted)', 'Hold breath underwater (assisted)', 'Attempt to open eyes underwater', 'Attempt to recover object from bottom', 'Front “starfish” float (assisted)', 'Back “starfish” float (assisted)', 'Front “pencil” float (assisted)', 'Back “pencil” float (assisted)', 'Kicking on front (assisted)', 'Kicking on back (assisted)', 'Underwater passes', 'Water Smart message: Swim to Survive'], notes: '', aiDrills: [] },
+      { week: 6, skills: ['Jump entry (assisted)', 'Entry and submerge from sitting position (assisted)', 'Exit the water (unassisted)', 'Attempt to recover object from bottom', 'Standing jump entry, return to edge (assisted)', 'Jump entry and float wearing PFD (assisted)', 'Front “starfish” float (assisted)', 'Back “starfish” float (assisted)', 'Front “pencil” float (assisted)', 'Back “pencil” float (assisted)', 'Kicking on front (assisted)', 'Kicking on back (assisted)', 'Underwater passes', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
+      { week: 7, skills: ['Jump entry (assisted)', 'Entry and submerge from sitting position (assisted)', 'Exit the water (unassisted)', 'Attempt to recover object from bottom', 'Jump entry and float wearing PFD (assisted)', 'Front “starfish” float (assisted)', 'Back “starfish” float (assisted)', 'Front “pencil” float (assisted)', 'Back “pencil” float (assisted)', 'Kicking on front (assisted)', 'Kicking on back (assisted)', 'Underwater passes', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+      { week: 8, skills: ['Jump entry (assisted)', 'Entry and submerge from sitting position (assisted)', 'Exit the water (unassisted)', 'Attempt to recover object from bottom', 'Jump entry and float wearing PFD (assisted)', 'Front “pencil” float (assisted)', 'Back “pencil” float (assisted)', 'Kicking on front (assisted)', 'Kicking on back (assisted)', 'Underwater passes', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
+      { week: 9, skills: ['Jump entry (assisted)', 'Entry and submerge from sitting position (assisted)', 'Exit the water (unassisted)', 'Attempt to recover object from bottom', 'Standing jump entry, return to edge (assisted)', 'Jump entry and float wearing PFD (assisted)', 'Front “pencil” float (assisted)', 'Back “pencil” float (assisted)', 'Kicking on front (assisted)', 'Kicking on back (assisted)', 'Underwater passes', 'Water Smart message: Within Arms’ Reach', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
+      { week: 10, skills: ['Exit the water (unassisted)', 'Hold breath underwater (assisted)', 'Attempt to open eyes underwater', 'Attempt to recover object from bottom', 'Standing jump entry, return to edge (assisted)', 'Jump entry and float wearing PFD (assisted)', 'Front “pencil” float (assisted)', 'Back “pencil” float (assisted)', 'Kicking on front (assisted)', 'Kicking on back (assisted)', 'Underwater passes', 'Water Smart message: Wear a Lifejacket', 'Water Smart message: Swim to Survive'], notes: '', aiDrills: [] },
+    ],
+
+    preschool1: [
+      { week: 1, skills: ['Enter and exit shallow water (assisted)', 'Face in water', 'Blow bubbles in water', 'Float on front (3 sec.) assisted', 'Float on back (3 sec.) assisted', 'Safe movement in shallow water wearing PFD', 'Glide on front (3 m) assisted', 'Glide on back (3 m) assisted', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+      { week: 2, skills: ['Enter and exit shallow water (assisted)', 'Jump into chest-deep water (assisted)', 'Face in water', 'Blow bubbles in water', 'Float on front (3 sec.) assisted', 'Float on back (3 sec.) assisted', 'Safe movement in shallow water wearing PFD', 'Glide on front (3 m) assisted', 'Glide on back (3 m) assisted', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+      { week: 3, skills: ['Enter and exit shallow water (assisted)', 'Jump into chest-deep water (assisted)', 'Face in water', 'Blow bubbles in water', 'Float on front (3 sec.) assisted', 'Float on back (3 sec.) assisted', 'Glide on front (3 m) assisted', 'Glide on back (3 m) assisted', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
+      { week: 4, skills: ['Enter and exit shallow water (assisted)', 'Jump into chest-deep water (assisted)', 'Face in water', 'Blow bubbles in water', 'Float on front (3 sec.) assisted', 'Float on back (3 sec.) assisted', 'Glide on front (3 m) assisted', 'Glide on back (3 m) assisted', 'Water Smart message: Swim to Survive'], notes: '', aiDrills: [] },
+      { week: 5, skills: ['Enter and exit shallow water (assisted)', 'Jump into chest-deep water (assisted)', 'Face in water', 'Blow bubbles in water', 'Float on front (3 sec.) assisted', 'Float on back (3 sec.) assisted', 'Glide on front (3 m) assisted', 'Glide on back (3 m) assisted', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+      { week: 6, skills: ['Enter and exit shallow water (assisted)', 'Jump into chest-deep water (assisted)', 'Face in water', 'Blow bubbles in water', 'Float on front (3 sec.) assisted', 'Float on back (3 sec.) assisted', 'Safe movement in shallow water wearing PFD', 'Glide on front (3 m) assisted', 'Glide on back (3 m) assisted', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+      { week: 7, skills: ['Enter and exit shallow water (assisted)', 'Jump into chest-deep water (assisted)', 'Face in water', 'Blow bubbles in water', 'Float on front (3 sec.) assisted', 'Float on back (3 sec.) assisted', 'Glide on front (3 m) assisted', 'Glide on back (3 m) assisted', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+      { week: 8, skills: ['Enter and exit shallow water (assisted)', 'Jump into chest-deep water (assisted)', 'Face in water', 'Blow bubbles in water', 'Float on front (3 sec.) assisted', 'Float on back (3 sec.) assisted', 'Glide on front (3 m) assisted', 'Glide on back (3 m) assisted', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
+      { week: 9, skills: ['Enter and exit shallow water (assisted)', 'Jump into chest-deep water (assisted)', 'Face in water', 'Blow bubbles in water', 'Float on front (3 sec.) assisted', 'Float on back (3 sec.) assisted', 'Glide on front (3 m) assisted', 'Glide on back (3 m) assisted', 'Water Smart message: Swim to Survive'], notes: '', aiDrills: [] },
+      { week: 10, skills: ['Submerge', 'Submerge and exhale 3 times', 'Float on front (3 sec.) wearing PFD or with buoyant aid', 'Float on back (3 sec.) wearing PFD or with buoyant aid', 'Roll laterally front to back and back to front, wearing PFD', 'Glide on front (3 m) wearing PFD or with buoyant aid', 'Glide on back (3 m) wearing PFD or with buoyant aid', 'Flutter kick on back with buoyant aid 5 m', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+    ],
+
+    preschool2: [
+      { week: 1, skills: ['Enter and exit shallow water wearing PFD', 'Submerge', 'Float on front (3 sec.) wearing PFD or with buoyant aid', 'Float on back (3 sec.) wearing PFD or with buoyant aid', 'Glide on front (3 m) wearing PFD or with buoyant aid', 'Glide on back (3 m) wearing PFD or with buoyant aid', 'Flutter kick on back with buoyant aid 5 m', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
+      { week: 2, skills: ['Enter and exit shallow water wearing PFD', 'Submerge', 'Float on front (3 sec.) wearing PFD or with buoyant aid', 'Float on back (3 sec.) wearing PFD or with buoyant aid', 'Glide on front (3 m) wearing PFD or with buoyant aid', 'Glide on back (3 m) wearing PFD or with buoyant aid', 'Flutter kick on back with buoyant aid 5 m', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+      { week: 3, skills: ['Enter and exit shallow water wearing PFD', 'Submerge', 'Float on front (3 sec.) wearing PFD or with buoyant aid', 'Float on back (3 sec.) wearing PFD or with buoyant aid', 'Glide on front (3 m) wearing PFD or with buoyant aid', 'Glide on back (3 m) wearing PFD or with buoyant aid', 'Flutter kick on back with buoyant aid 5 m', 'Water Smart message: Swim to Survive'], notes: '', aiDrills: [] },
+      { week: 4, skills: ['Enter and exit shallow water wearing PFD', 'Submerge', 'Float on front (3 sec.) wearing PFD or with buoyant aid', 'Float on back (3 sec.) wearing PFD or with buoyant aid', 'Glide on front (3 m) wearing PFD or with buoyant aid', 'Glide on back (3 m) wearing PFD or with buoyant aid', 'Flutter kick on back with buoyant aid 5 m', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+      { week: 5, skills: ['Enter and exit shallow water wearing PFD', 'Submerge', 'Float on front (3 sec.) wearing PFD or with buoyant aid', 'Float on back (3 sec.) wearing PFD or with buoyant aid', 'Glide on front (3 m) wearing PFD or with buoyant aid', 'Glide on back (3 m) wearing PFD or with buoyant aid', 'Flutter kick on back with buoyant aid 5 m', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
+      { week: 6, skills: ['Enter and exit shallow water wearing PFD', 'Submerge', 'Float on front (3 sec.) wearing PFD or with buoyant aid', 'Float on back (3 sec.) wearing PFD or with buoyant aid', 'Glide on front (3 m) wearing PFD or with buoyant aid', 'Glide on back (3 m) wearing PFD or with buoyant aid', 'Flutter kick on back with buoyant aid 5 m', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+      { week: 7, skills: ['Enter and exit shallow water wearing PFD', 'Submerge', 'Float on front (3 sec.) wearing PFD or with buoyant aid', 'Float on back (3 sec.) wearing PFD or with buoyant aid', 'Glide on front (3 m) wearing PFD or with buoyant aid', 'Glide on back (3 m) wearing PFD or with buoyant aid', 'Flutter kick on back with buoyant aid 5 m', 'Water Smart message: Swim to Survive'], notes: '', aiDrills: [] },
+      { week: 8, skills: ['Enter and exit shallow water wearing PFD', 'Submerge', 'Float on front (3 sec.) wearing PFD or with buoyant aid', 'Float on back (3 sec.) wearing PFD or with buoyant aid', 'Glide on front (3 m) wearing PFD or with buoyant aid', 'Glide on back (3 m) wearing PFD or with buoyant aid', 'Flutter kick on back with buoyant aid 5 m', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+      { week: 9, skills: ['Enter and exit shallow water wearing PFD', 'Submerge', 'Float on front (3 sec.) wearing PFD or with buoyant aid', 'Float on back (3 sec.) wearing PFD or with buoyant aid', 'Glide on front (3 m) wearing PFD or with buoyant aid', 'Glide on back (3 m) wearing PFD or with buoyant aid', 'Flutter kick on back with buoyant aid 5 m', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
+      { week: 10, skills: ['Enter and exit shallow water wearing PFD', 'Submerge', 'Float on front (3 sec.) wearing PFD or with buoyant aid', 'Float on back (3 sec.) wearing PFD or with buoyant aid', 'Glide on front (3 m) wearing PFD or with buoyant aid', 'Glide on back (3 m) wearing PFD or with buoyant aid', 'Flutter kick on back with buoyant aid 5 m', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+    ],
+
+    preschool3: [
+      { week: 1, skills: ['Hold breath underwater 3 sec.', 'Submerge and exhale 5 times', 'Recover object from bottom in waist-deep water', 'Float on front 5 sec.', 'Float on back 5 sec.', 'Roll laterally front to back and back to front', 'Glide on front 3 m', 'Glide on back 3 m', 'Flutter kick on back 5 m', 'Flutter kick on front 5 m', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+      { week: 2, skills: ['Open eyes underwater', 'Recover object from bottom in chest-deep water', 'Front float; roll to back; swim 5 m', 'Glide on side 3 m', 'Flutter kick on front 7 m', 'Flutter kick on back 7 m', 'Flutter kick on side 5 m', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+      { week: 3, skills: ['Tread water 10 sec. wearing PFD', 'Stride entry into deep water', 'Front crawl 5 m wearing PFD', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
+      { week: 4, skills: ['Jump into deep water, return and exit', 'Sideways entry', 'Tread water 10 sec. wearing PFD', 'Open eyes underwater', 'Recover object from bottom in chest-deep water', 'Wearing a PFD, sideways entry into deep water; tread 15 sec.; swim/kick 5 m', 'Front float; roll to back; swim 5 m', 'Glide on side 3 m', 'Flutter kick on side 5 m', 'Front crawl 5 m wearing PFD', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+      { week: 5, skills: ['Back float; roll to front; swim 3 m', 'Breaststroke arms drill 5 m', 'Water Smart message: Swim to Survive'], notes: '', aiDrills: [] },
+      { week: 6, skills: ['Jump into deep water, return and exit', 'Sideways entry', 'Tread water 10 sec. wearing PFD', 'Open eyes underwater', 'Recover object from bottom in chest-deep water', 'Wearing a PFD, sideways entry into deep water; tread 15 sec.; swim/kick 5 m', 'Front float; roll to back; swim 5 m', 'Glide on side 3 m', 'Flutter kick on side 5 m', 'Front crawl 5 m wearing PFD', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+      { week: 7, skills: ['Back float; roll to front; swim 3 m', 'Breaststroke arms drill 5 m', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
+      { week: 8, skills: ['Jump into deep water, return and exit', 'Sideways entry', 'Tread water 10 sec. wearing PFD', 'Open eyes underwater', 'Recover object from bottom in chest-deep water', 'Wearing a PFD, sideways entry into deep water; tread 15 sec.; swim/kick 5 m', 'Front float; roll to back; swim 5 m', 'Glide on side 3 m', 'Flutter kick on side 5 m', 'Front crawl 5 m wearing PFD', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+      { week: 9, skills: ['Back float; roll to front; swim 3 m', 'Breaststroke arms drill 5 m', 'Water Smart message: Swim to Survive'], notes: '', aiDrills: [] },
+      { week: 10, skills: ['Jump into deep water, return and exit', 'Sideways entry', 'Tread water 10 sec. wearing PFD', 'Open eyes underwater', 'Recover object from bottom in chest-deep water', 'Wearing a PFD, sideways entry into deep water; tread 15 sec.; swim/kick 5 m', 'Front float; roll to back; swim 5 m', 'Glide on side 3 m', 'Flutter kick on side 5 m', 'Front crawl 5 m wearing PFD', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+    ],
+
+    preschool4: [
+      { week: 1, skills: ['Shallow dive into deep water', 'Stationary eggbeater kick 30 sec.', 'Breaststroke 25 m', 'Front crawl 50 m', 'Head-up front crawl 10 m', 'Interval training: 4 × 15 m breaststroke with 30 sec. rests', 'Sprint front crawl 25 m', 'Water Smart message: Check the Ice'], notes: '', aiDrills: [] },
+      { week: 2, skills: ['Jump entry into deep water, and tread 2 min.', 'Back somersault (in water)', 'Breaststroke 25 m', 'Back crawl 50 m', 'Interval training: 4 × 15 m breaststroke with 30 sec. rests', 'Sprint back crawl 25 m', 'Water Smart message: Swim with a Buddy'], notes: '', aiDrills: [] },
+      { week: 3, skills: ['Forward roll entry into deep water', 'Tread water 30 sec.', 'Handstand in shallow water', 'Front somersault (in water)', 'Whip kick on back 10 m', 'Front crawl 15 m', 'Back crawl 15 m', 'Interval training: 4 × 15 m flutter kick with 30 sec. rests', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+      { week: 4, skills: ['Forward roll entry into deep water', 'Tread water 30 sec.', 'Handstand in shallow water', 'Front somersault (in water)', 'Whip kick on back 10 m', 'Front crawl 15 m', 'Back crawl 15 m', 'Interval training: 4 × 15 m flutter kick with 30 sec. rests', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
+      { week: 5, skills: ['Forward roll entry into deep water', 'Tread water 30 sec.', 'Handstand in shallow water', 'Front somersault (in water)', 'Whip kick on back 10 m', 'Front crawl 15 m', 'Back crawl 15 m', 'Interval training: 4 × 15 m flutter kick with 30 sec. rests', 'Water Smart message: Swim to Survive'], notes: '', aiDrills: [] },
+      { week: 6, skills: ['Forward roll entry into deep water', 'Tread water 30 sec.', 'Handstand in shallow water', 'Front somersault (in water)', 'Whip kick on back 10 m', 'Front crawl 15 m', 'Back crawl 15 m', 'Interval training: 4 × 15 m flutter kick with 30 sec. rests', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+      { week: 7, skills: ['Forward roll entry into deep water', 'Tread water 30 sec.', 'Handstand in shallow water', 'Front somersault (in water)', 'Whip kick on back 10 m', 'Front crawl 15 m', 'Back crawl 15 m', 'Interval training: 4 × 15 m flutter kick with 30 sec. rests', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
+      { week: 8, skills: ['Forward roll entry into deep water', 'Tread water 30 sec.', 'Handstand in shallow water', 'Front somersault (in water)', 'Whip kick on back 10 m', 'Front crawl 15 m', 'Back crawl 15 m', 'Interval training: 4 × 15 m flutter kick with 30 sec. rests', 'Water Smart message: Swim to Survive'], notes: '', aiDrills: [] },
+      { week: 9, skills: ['Forward roll entry into deep water', 'Tread water 30 sec.', 'Handstand in shallow water', 'Front somersault (in water)', 'Whip kick on back 10 m', 'Front crawl 15 m', 'Back crawl 15 m', 'Interval training: 4 × 15 m flutter kick with 30 sec. rests', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+      { week: 10, skills: ['Forward roll entry into deep water', 'Tread water 30 sec.', 'Handstand in shallow water', 'Front somersault (in water)', 'Whip kick on back 10 m', 'Front crawl 15 m', 'Back crawl 15 m', 'Interval training: 4 × 15 m flutter kick with 30 sec. rests', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
+    ],
+
+    preschool5: [
+      { week: 1, skills: ['Stride entry into deep water', 'Legs-only surface support 45 sec.', 'Swim underwater 10 m to recover object', 'Eggbeater kick on back 15 m', 'Front crawl 10 m', 'Back crawl 10 m', 'Head-up swim 25 m', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+      { week: 2, skills: ['Stride entry into deep water', 'Legs-only surface support 45 sec.', 'Swim underwater 10 m to recover object', 'Eggbeater kick on back 15 m', 'Front crawl 25 m', 'Back crawl 25 m', 'Head-up swim 25 m', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
+      { week: 3, skills: ['Stride entry into deep water', 'Legs-only surface support 45 sec.', 'Swim underwater 10 m to recover object', 'Eggbeater kick on back 15 m', 'Front crawl 25 m', 'Back crawl 25 m', 'Head-up swim 25 m', 'Water Smart message: Swim to Survive'], notes: '', aiDrills: [] },
+      { week: 4, skills: ['Stride entry into deep water', 'Legs-only surface support 45 sec.', 'Swim underwater 10 m to recover object', 'Eggbeater kick on back 15 m', 'Front crawl 25 m', 'Back crawl 25 m', 'Head-up swim 25 m', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+      { week: 5, skills: ['Stride entry into deep water', 'Legs-only surface support 45 sec.', 'Swim underwater 10 m to recover object', 'Eggbeater kick on back 15 m', 'Front crawl 25 m', 'Back crawl 25 m', 'Head-up swim 25 m', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
+      { week: 6, skills: ['Stride entry into deep water', 'Legs-only surface support 45 sec.', 'Swim underwater 10 m to recover object', 'Eggbeater kick on back 15 m', 'Front crawl 25 m', 'Back crawl 25 m', 'Head-up swim 25 m', 'Water Smart message: Swim to Survive'], notes: '', aiDrills: [] },
+      { week: 7, skills: ['Stride entry into deep water', 'Legs-only surface support 45 sec.', 'Swim underwater 10 m to recover object', 'Eggbeater kick on back 15 m', 'Front crawl 25 m', 'Back crawl 25 m', 'Head-up swim 25 m', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+      { week: 8, skills: ['Stride entry into deep water', 'Legs-only surface support 45 sec.', 'Swim underwater 10 m to recover object', 'Eggbeater kick on back 15 m', 'Front crawl 25 m', 'Back crawl 25 m', 'Head-up swim 25 m', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
+      { week: 9, skills: ['Stride entry into deep water', 'Legs-only surface support 45 sec.', 'Swim underwater 10 m to recover object', 'Eggbeater kick on back 15 m', 'Front crawl 25 m', 'Back crawl 25 m', 'Head-up swim 25 m', 'Water Smart message: Swim to Survive'], notes: '', aiDrills: [] },
+      { week: 10, skills: ['Stride entry into deep water', 'Legs-only surface support 45 sec.', 'Swim underwater 10 m to recover object', 'Eggbeater kick on back 15 m', 'Front crawl 100 m', 'Back crawl 100 m', 'Head-up swim 25 m', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+    ],
+
+    swimmer1: [
+      { week: 1, skills: ['Enter and exit shallow water', 'Hold breath underwater 5 sec.', 'Submerge and exhale 5 times', 'Open eyes underwater', 'Float on front 5 sec.', 'Float on back 5 sec.', 'Glide on front 3 m', 'Glide on back 3 m', 'Water Smart message: Swim with a Buddy'], notes: '', aiDrills: [] },
+      { week: 2, skills: ['Enter and exit shallow water', 'Hold breath underwater 5 sec.', 'Submerge and exhale 5 times', 'Open eyes underwater', 'Float on front 5 sec.', 'Float on back 5 sec.', 'Glide on front 3 m', 'Glide on back 3 m', 'Water Smart message: Check the Ice'], notes: '', aiDrills: [] },
+      { week: 3, skills: ['Enter and exit shallow water', 'Hold breath underwater 5 sec.', 'Submerge and exhale 5 times', 'Open eyes underwater', 'Float on front 5 sec.', 'Float on back 5 sec.', 'Glide on front 3 m', 'Glide on back 3 m', 'Water Smart message: Swim to Survive'], notes: '', aiDrills: [] },
+      { week: 4, skills: ['Enter and exit shallow water', 'Hold breath underwater 5 sec.', 'Submerge and exhale 5 times', 'Open eyes underwater', 'Float on front 5 sec.', 'Float on back 5 sec.', 'Glide on front 3 m', 'Glide on back 3 m', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+      { week: 5, skills: ['Enter and exit shallow water', 'Hold breath underwater 5 sec.', 'Submerge and exhale 5 times', 'Open eyes underwater', 'Float on front 5 sec.', 'Float on back 5 sec.', 'Glide on front 3 m', 'Glide on back 3 m', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
+      { week: 6, skills: ['Enter and exit shallow water', 'Hold breath underwater 5 sec.', 'Submerge and exhale 5 times', 'Open eyes underwater', 'Float on front 5 sec.', 'Float on back 5 sec.', 'Glide on front 3 m', 'Glide on back 3 m', 'Water Smart message: Swim with a Buddy'], notes: '', aiDrills: [] },
+      { week: 7, skills: ['Enter and exit shallow water', 'Hold breath underwater 5 sec.', 'Submerge and exhale 5 times', 'Open eyes underwater', 'Float on front 5 sec.', 'Float on back 5 sec.', 'Glide on front 3 m', 'Glide on back 3 m', 'Water Smart message: Check the Ice'], notes: '', aiDrills: [] },
+      { week: 8, skills: ['Enter and exit shallow water', 'Hold breath underwater 5 sec.', 'Submerge and exhale 5 times', 'Open eyes underwater', 'Float on front 5 sec.', 'Float on back 5 sec.', 'Glide on front 3 m', 'Glide on back 3 m', 'Water Smart message: Swim to Survive'], notes: '', aiDrills: [] },
+      { week: 9, skills: ['Enter and exit shallow water', 'Hold breath underwater 5 sec.', 'Submerge and exhale 5 times', 'Open eyes underwater', 'Float on front 5 sec.', 'Float on back 5 sec.', 'Glide on front 3 m', 'Glide on back 3 m', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+      { week: 10, skills: ['Enter and exit shallow water', 'Hold breath underwater 5 sec.', 'Submerge and exhale 5 times', 'Open eyes underwater', 'Float on front 5 sec.', 'Float on back 5 sec.', 'Glide on front 3 m', 'Glide on back 3 m', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
+    ],
+
+    swimmer2: [
+      { week: 1, skills: ['Recover object from bottom in chest-deep water', 'Flutter kick on front 10 m', 'Flutter kick on back 10 m', 'Flutter kick on side 10 m', 'Front crawl 10 m', 'Back crawl 10 m', 'Interval training: 4 × 5 m flutter kick with 20 sec. rests'], notes: '', aiDrills: [] },
+      { week: 2, skills: ['Recover object from bottom in chest-deep water', 'Flutter kick on front 10 m', 'Flutter kick on back 10 m', 'Flutter kick on side 10 m', 'Front crawl 10 m', 'Back crawl 10 m', 'Interval training: 4 × 5 m flutter kick with 20 sec. rests'], notes: '', aiDrills: [] },
+      { week: 3, skills: ['Recover object from bottom in chest-deep water', 'Flutter kick on front 10 m', 'Flutter kick on back 10 m', 'Flutter kick on side 10 m', 'Front crawl 10 m', 'Back crawl 10 m', 'Interval training: 4 × 5 m flutter kick with 20 sec. rests'], notes: '', aiDrills: [] },
+      { week: 4, skills: ['Recover object from bottom in chest-deep water', 'Flutter kick on front 10 m', 'Flutter kick on back 10 m', 'Flutter kick on side 10 m', 'Front crawl 10 m', 'Back crawl 10 m', 'Interval training: 4 × 5 m flutter kick with 20 sec. rests'], notes: '', aiDrills: [] },
+      { week: 5, skills: ['Recover object from bottom in chest-deep water', 'Flutter kick on front 10 m', 'Flutter kick on back 10 m', 'Flutter kick on side 10 m', 'Front crawl 10 m', 'Back crawl 10 m', 'Interval training: 4 × 5 m flutter kick with 20 sec. rests'], notes: '', aiDrills: [] },
+      { week: 6, skills: ['Recover object from bottom in chest-deep water', 'Flutter kick on front 10 m', 'Flutter kick on back 10 m', 'Flutter kick on side 10 m', 'Front crawl 10 m', 'Back crawl 10 m', 'Interval training: 4 × 5 m flutter kick with 20 sec. rests'], notes: '', aiDrills: [] },
+      { week: 7, skills: ['Recover object from bottom in chest-deep water', 'Flutter kick on front 10 m', 'Flutter kick on back 10 m', 'Flutter kick on side 10 m', 'Front crawl 10 m', 'Back crawl 10 m', 'Interval training: 4 × 5 m flutter kick with 20 sec. rests'], notes: '', aiDrills: [] },
+      { week: 8, skills: ['Recover object from bottom in chest-deep water', 'Flutter kick on front 10 m', 'Flutter kick on back 10 m', 'Flutter kick on side 10 m', 'Front crawl 10 m', 'Back crawl 10 m', 'Interval training: 4 × 5 m flutter kick with 20 sec. rests'], notes: '', aiDrills: [] },
+      { week: 9, skills: ['Recover object from bottom in chest-deep water', 'Flutter kick on front 10 m', 'Flutter kick on back 10 m', 'Flutter kick on side 10 m', 'Front crawl 10 m', 'Back crawl 10 m', 'Interval training: 4 × 5 m flutter kick with 20 sec. rests'], notes: '', aiDrills: [] },
+      { week: 10, skills: ['Stride entry into deep water', 'Legs-only surface support 45 sec.', 'Swim underwater 10 m to recover object', 'Eggbeater kick on back 15 m', 'Front crawl 10 m', 'Back crawl 10 m', 'Head-up swim 25 m', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+    ],
+
+    swimmer3: [
+      { week: 1, skills: ['Handstand in shallow water', 'Flutter kick on back 5 m; reverse direction and flutter kick on front 5 m', 'Flutter kick on front 5 m; reverse direction and flutter kick on back 5 m', 'Whip kick on back 10 m', 'Front crawl 15 m', 'Back crawl 15 m'], notes: '', aiDrills: [] },
+      { week: 2, skills: ['Handstand in shallow water', 'Flutter kick on back 5 m; reverse direction and flutter kick on front 5 m', 'Flutter kick on front 5 m; reverse direction and flutter kick on back 5 m', 'Whip kick on back 10 m', 'Front crawl 15 m', 'Back crawl 15 m'], notes: '', aiDrills: [] },
+      { week: 3, skills: ['Handstand in shallow water', 'Flutter kick on back 5 m; reverse direction and flutter kick on front 5 m', 'Flutter kick on front 5 m; reverse direction and flutter kick on back 5 m', 'Whip kick on back 10 m', 'Front crawl 15 m', 'Back crawl 15 m'], notes: '', aiDrills: [] },
+      { week: 4, skills: ['Handstand in shallow water', 'Flutter kick on back 5 m; reverse direction and flutter kick on front 5 m', 'Flutter kick on front 5 m; reverse direction and flutter kick on back 5 m', 'Whip kick on back 10 m', 'Front crawl 15 m', 'Back crawl 15 m'], notes: '', aiDrills: [] },
+      { week: 5, skills: ['Handstand in shallow water', 'Flutter kick on back 5 m; reverse direction and flutter kick on front 5 m', 'Flutter kick on front 5 m; reverse direction and flutter kick on back 5 m', 'Whip kick on back 10 m', 'Front crawl 15 m', 'Back crawl 15 m'], notes: '', aiDrills: [] },
+      { week: 6, skills: ['Handstand in shallow water', 'Flutter kick on back 5 m; reverse direction and flutter kick on front 5 m', 'Flutter kick on front 5 m; reverse direction and flutter kick on back 5 m', 'Whip kick on back 10 m', 'Front crawl 15 m', 'Back crawl 15 m'], notes: '', aiDrills: [] },
+      { week: 7, skills: ['Handstand in shallow water', 'Flutter kick on back 5 m; reverse direction and flutter kick on front 5 m', 'Flutter kick on front 5 m; reverse direction and flutter kick on back 5 m', 'Whip kick on back 10 m', 'Front crawl 15 m', 'Back crawl 15 m'], notes: '', aiDrills: [] },
+      { week: 8, skills: ['Handstand in shallow water', 'Flutter kick on back 5 m; reverse direction and flutter kick on front 5 m', 'Flutter kick on front 5 m; reverse direction and flutter kick on back 5 m', 'Whip kick on back 10 m', 'Front crawl 15 m', 'Back crawl 15 m'], notes: '', aiDrills: [] },
+      { week: 9, skills: ['Handstand in shallow water', 'Flutter kick on back 5 m; reverse direction and flutter kick on front 5 m', 'Flutter kick on front 5 m; reverse direction and flutter kick on back 5 m', 'Whip kick on back 10 m', 'Front crawl 15 m', 'Back crawl 15 m'], notes: '', aiDrills: [] },
+      { week: 10, skills: ['Handstand in shallow water', 'Flutter kick on back 5 m; reverse direction and flutter kick on front 5 m', 'Flutter kick on front 5 m; reverse direction and flutter kick on back 5 m', 'Whip kick on back 10 m', 'Front crawl 15 m', 'Back crawl 15 m'], notes: '', aiDrills: [] },
+    ],
+
+    swimmer4: [
+      { week: 1, skills: ['Swim underwater 5 m', 'Whip kick on front 15 m', 'Breaststroke arms drill 15 m', 'Front crawl 25 m', 'Back crawl 25 m', 'Sprint front crawl 25 m'], notes: '', aiDrills: [] },
+      { week: 2, skills: ['Swim underwater 5 m', 'Whip kick on front 15 m', 'Breaststroke arms drill 15 m', 'Front crawl 25 m', 'Back crawl 25 m', 'Sprint front crawl 25 m'], notes: '', aiDrills: [] },
+      { week: 3, skills: ['Swim underwater 5 m', 'Whip kick on front 15 m', 'Breaststroke arms drill 15 m', 'Front crawl 25 m', 'Back crawl 25 m', 'Sprint front crawl 25 m'], notes: '', aiDrills: [] },
+      { week: 4, skills: ['Swim underwater 5 m', 'Whip kick on front 15 m', 'Breaststroke arms drill 15 m', 'Front crawl 25 m', 'Back crawl 25 m', 'Sprint front crawl 25 m'], notes: '', aiDrills: [] },
+      { week: 5, skills: ['Swim underwater 5 m', 'Whip kick on front 15 m', 'Breaststroke arms drill 15 m', 'Front crawl 25 m', 'Back crawl 25 m', 'Sprint front crawl 25 m'], notes: '', aiDrills: [] },
+      { week: 6, skills: ['Swim underwater 5 m', 'Whip kick on front 15 m', 'Breaststroke arms drill 15 m', 'Front crawl 25 m', 'Back crawl 25 m', 'Sprint front crawl 25 m'], notes: '', aiDrills: [] },
+      { week: 7, skills: ['Swim underwater 5 m', 'Whip kick on front 15 m', 'Breaststroke arms drill 15 m', 'Front crawl 25 m', 'Back crawl 25 m', 'Sprint front crawl 25 m'], notes: '', aiDrills: [] },
+      { week: 8, skills: ['Swim underwater 5 m', 'Whip kick on front 15 m', 'Breaststroke arms drill 15 m', 'Front crawl 25 m', 'Back crawl 25 m', 'Sprint front crawl 25 m'], notes: '', aiDrills: [] },
+      { week: 9, skills: ['Swim underwater 5 m', 'Whip kick on front 15 m', 'Breaststroke arms drill 15 m', 'Front crawl 25 m', 'Back crawl 25 m', 'Sprint front crawl 25 m'], notes: '', aiDrills: [] },
+      { week: 10, skills: ['Swim underwater 5 m', 'Whip kick on front 15 m', 'Breaststroke arms drill 15 m', 'Front crawl 25 m', 'Back crawl 25 m', 'Sprint front crawl 25 m'], notes: '', aiDrills: [] },
+    ],
+
+    swimmer5: [
+      { week: 1, skills: ['Tread water 1 min.', 'Stationary eggbeater kick 30 sec.', 'Breaststroke 25 m', 'Front crawl 50 m', 'Back crawl 50 m', 'Head-up front crawl 10 m'], notes: '', aiDrills: [] },
+      { week: 2, skills: ['Tread water 1 min.', 'Stationary eggbeater kick 30 sec.', 'Breaststroke 25 m', 'Front crawl 50 m', 'Back crawl 50 m', 'Head-up front crawl 10 m'], notes: '', aiDrills: [] },
+      { week: 3, skills: ['Tread water 1 min.', 'Stationary eggbeater kick 30 sec.', 'Breaststroke 25 m', 'Front crawl 50 m', 'Back crawl 50 m', 'Head-up front crawl 10 m'], notes: '', aiDrills: [] },
+      { week: 4, skills: ['Tread water 1 min.', 'Stationary eggbeater kick 30 sec.', 'Breaststroke 25 m', 'Front crawl 50 m', 'Back crawl 50 m', 'Head-up front crawl 10 m'], notes: '', aiDrills: [] },
+      { week: 5, skills: ['Tread water 1 min.', 'Stationary eggbeater kick 30 sec.', 'Breaststroke 25 m', 'Front crawl 50 m', 'Back crawl 50 m', 'Head-up front crawl 10 m'], notes: '', aiDrills: [] },
+      { week: 6, skills: ['Tread water 1 min.', 'Stationary eggbeater kick 30 sec.', 'Breaststroke 25 m', 'Front crawl 50 m', 'Back crawl 50 m', 'Head-up front crawl 10 m'], notes: '', aiDrills: [] },
+      { week: 7, skills: ['Tread water 1 min.', 'Stationary eggbeater kick 30 sec.', 'Breaststroke 25 m', 'Front crawl 50 m', 'Back crawl 50 m', 'Head-up front crawl 10 m'], notes: '', aiDrills: [] },
+      { week: 8, skills: ['Tread water 1 min.', 'Stationary eggbeater kick 30 sec.', 'Breaststroke 25 m', 'Front crawl 50 m', 'Back crawl 50 m', 'Head-up front crawl 10 m'], notes: '', aiDrills: [] },
+      { week: 9, skills: ['Tread water 1 min.', 'Stationary eggbeater kick 30 sec.', 'Breaststroke 25 m', 'Front crawl 50 m', 'Back crawl 50 m', 'Head-up front crawl 10 m'], notes: '', aiDrills: [] },
+      { week: 10, skills: ['Tread water 1 min.', 'Stationary eggbeater kick 30 sec.', 'Breaststroke 25 m', 'Front crawl 50 m', 'Back crawl 50 m', 'Head-up front crawl 10 m'], notes: '', aiDrills: [] },
+    ],
+
+    swimmer6: [
+      { week: 1, skills: ['Swim underwater 10 m to recover object', 'Eggbeater kick on back 15 m', 'Breaststroke 50 m', 'Front crawl 100 m', 'Back crawl 100 m', 'Head-up swim 25 m'], notes: '', aiDrills: [] },
+      { week: 2, skills: ['Swim underwater 10 m to recover object', 'Eggbeater kick on back 15 m', 'Breaststroke 50 m', 'Front crawl 100 m', 'Back crawl 100 m', 'Head-up swim 25 m'], notes: '', aiDrills: [] },
+      { week: 3, skills: ['Swim underwater 10 m to recover object', 'Eggbeater kick on back 15 m', 'Breaststroke 50 m', 'Front crawl 100 m', 'Back crawl 100 m', 'Head-up swim 25 m'], notes: '', aiDrills: [] },
+      { week: 4, skills: ['Swim underwater 10 m to recover object', 'Eggbeater kick on back 15 m', 'Breaststroke 50 m', 'Front crawl 100 m', 'Back crawl 100 m', 'Head-up swim 25 m'], notes: '', aiDrills: [] },
+      { week: 5, skills: ['Swim underwater 10 m to recover object', 'Eggbeater kick on back 15 m', 'Breaststroke 50 m', 'Front crawl 100 m', 'Back crawl 100 m', 'Head-up swim 25 m'], notes: '', aiDrills: [] },
+      { week: 6, skills: ['Swim underwater 10 m to recover object', 'Eggbeater kick on back 15 m', 'Breaststroke 50 m', 'Front crawl 100 m', 'Back crawl 100 m', 'Head-up swim 25 m'], notes: '', aiDrills: [] },
+      { week: 7, skills: ['Swim underwater 10 m to recover object', 'Eggbeater kick on back 15 m', 'Breaststroke 50 m', 'Front crawl 100 m', 'Back crawl 100 m', 'Head-up swim 25 m'], notes: '', aiDrills: [] },
+      { week: 8, skills: ['Swim underwater 10 m to recover object', 'Eggbeater kick on back 15 m', 'Breaststroke 50 m', 'Front crawl 100 m', 'Back crawl 100 m', 'Head-up swim 25 m'], notes: '', aiDrills: [] },
+      { week: 9, skills: ['Swim underwater 10 m to recover object', 'Eggbeater kick on back 15 m', 'Breaststroke 50 m', 'Front crawl 100 m', 'Back crawl 100 m', 'Head-up swim 25 m'], notes: '', aiDrills: [] },
+      { week: 10, skills: ['Stride entry into deep water', 'Legs-only surface support 45 sec.', 'Swim underwater 10 m to recover object', 'Eggbeater kick on back 15 m', 'Front crawl 100 m', 'Back crawl 100 m', 'Head-up swim 25 m', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
+    ],
   };
 
+  // Load from localStorage without aiDrills
   useEffect(() => {
     try {
       const saved = localStorage.getItem('swimLessonData');
       if (saved) {
-        setLessonData(JSON.parse(saved));
+        const parsed = JSON.parse(saved);
+        const restored = {};
+        for (const level in parsed) {
+          restored[level] = parsed[level].map(lesson => ({
+            ...lesson,
+            aiDrills: [] // Always start fresh
+          }));
+        }
+        setLessonData(restored);
       } else {
         setLessonData(initialLessonData);
       }
@@ -249,14 +218,13 @@ export default function App() {
     }
   }, []);
 
+  // Save only non-ai data to localStorage
   useEffect(() => {
-    if (Object.keys(lessonData).length > 0) {
-      try {
-        localStorage.setItem('swimLessonData', JSON.stringify(lessonData));
-      } catch (e) {
-        console.error('Failed to save to localStorage');
-      }
+    const dataToSave = {};
+    for (const level in lessonData) {
+      dataToSave[level] = lessonData[level].map(({ aiDrills, ...rest }) => rest);
     }
+    localStorage.setItem('swimLessonData', JSON.stringify(dataToSave));
   }, [lessonData]);
 
   if (Object.keys(lessonData).length === 0) {
