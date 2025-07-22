@@ -8,7 +8,234 @@ export default function App() {
   const [editingSkills, setEditingSkills] = useState([]);
   const [lessonData, setLessonData] = useState({});
 
-  // Initialize lesson data after mount
+  // Full lesson data from LSS Alberta
+  const initialLessonData = {
+    parentAndTot1: Array.from({ length: 10 }, (_, i) => ({
+      week: i + 1,
+      skills: [
+        'Enter and exit the water safely with tot',
+        'Hold tot on front, eye contact',
+        'Hold tot on back, head and back support',
+        'Front float (face out) – assisted',
+        'Back float (assisted)',
+        'Arms: splashing, reaching, paddling, on front and back',
+        'Legs: tickling, splashing, kicking, on front and back',
+        'Water Smart message: Swim to Survive',
+      ],
+      notes: '',
+      aiDrills: [],
+    })),
+    parentAndTot2: Array.from({ length: 10 }, (_, i) => ({
+      week: i + 1,
+      skills: [
+        'Entry from sitting position (assisted)',
+        'Exit the water (assisted)',
+        'Blow bubbles on and in water',
+        'Face wet and in water',
+        'Front float (face in) – assisted',
+        'Back float (assisted)',
+        'Kicking on front (assisted)',
+        'Kicking on back (assisted)',
+        'Water Smart message: Within Arms’ Reach',
+        'Water Smart message: Wear a Lifejacket',
+      ],
+      notes: '',
+      aiDrills: [],
+    })),
+    parentAndTot3: Array.from({ length: 10 }, (_, i) => ({
+      week: i + 1,
+      skills: [
+        'Entry and submerge from sitting position (assisted)',
+        'Exit the water (unassisted)',
+        'Hold breath underwater (assisted)',
+        'Attempt to open eyes underwater',
+        'Attempt to recover object from bottom',
+        'Standing jump entry, return to edge (assisted)',
+        'Front “starfish” float (assisted)',
+        'Back “starfish” float (assisted)',
+        'Front “pencil” float (assisted)',
+        'Back “pencil” float (assisted)',
+        'Kicking on front (assisted)',
+        'Kicking on back (assisted)',
+        'Underwater passes',
+        'Water Smart message: Within Arms’ Reach',
+        'Water Smart message: Swim to Survive',
+      ],
+      notes: '',
+      aiDrills: [],
+    })),
+    preschool1: Array.from({ length: 10 }, (_, i) => ({
+      week: i + 1,
+      skills: [
+        'Enter and exit shallow water (assisted)',
+        'Face in water',
+        'Blow bubbles in water',
+        'Float on front (3 sec.) assisted',
+        'Float on back (3 sec.) assisted',
+        'Safe movement in shallow water wearing PFD',
+        'Glide on front (3 m) assisted',
+        'Glide on back (3 m) assisted',
+        'Water Smart message: Within Arms’ Reach',
+      ],
+      notes: '',
+      aiDrills: [],
+    })),
+    preschool2: Array.from({ length: 10 }, (_, i) => ({
+      week: i + 1,
+      skills: [
+        'Enter and exit shallow water wearing PFD',
+        'Submerge',
+        'Float on front (3 sec.) wearing PFD or with buoyant aid',
+        'Float on back (3 sec.) wearing PFD or with buoyant aid',
+        'Glide on front (3 m) wearing PFD or with buoyant aid',
+        'Glide on back (3 m) wearing PFD or with buoyant aid',
+        'Flutter kick on back with buoyant aid 5 m',
+        'Water Smart message: Wear a Lifejacket',
+      ],
+      notes: '',
+      aiDrills: [],
+    })),
+    preschool3: Array.from({ length: 10 }, (_, i) => ({
+      week: i + 1,
+      skills: [
+        'Hold breath underwater 3 sec.',
+        'Submerge and exhale 5 times',
+        'Recover object from bottom in waist-deep water',
+        'Float on front 5 sec.',
+        'Float on back 5 sec.',
+        'Roll laterally front to back and back to front',
+        'Glide on front 3 m',
+        'Glide on back 3 m',
+        'Flutter kick on back 5 m',
+        'Flutter kick on front 5 m',
+        'Water Smart message: Within Arms’ Reach',
+        ...(i >= 2 ? ['Water Smart message: Wear a Lifejacket'] : [])
+      ],
+      notes: '',
+      aiDrills: [],
+    })),
+    preschool4: Array.from({ length: 10 }, (_, i) => ({
+      week: i + 1,
+      skills: [
+        'Open eyes underwater',
+        'Recover object from bottom in chest-deep water',
+        'Front float; roll to back; swim 5 m',
+        'Glide on side 3 m',
+        'Flutter kick on front 7 m',
+        'Flutter kick on back 7 m',
+        'Flutter kick on side 5 m',
+        'Water Smart message: Within Arms’ Reach',
+        ...(i >= 1 ? ['Tread water 10 sec. wearing PFD'] : []),
+        ...(i >= 3 ? ['Stride entry into deep water'] : []),
+        ...(i >= 5 ? ['Front crawl 5 m wearing PFD'] : [])
+      ],
+      notes: '',
+      aiDrills: [],
+    })),
+    preschool5: Array.from({ length: 10 }, (_, i) => ({
+      week: i + 1,
+      skills: [
+        'Jump into deep water, return and exit',
+        'Sideways entry',
+        'Tread water 10 sec. wearing PFD',
+        'Open eyes underwater',
+        'Recover object from bottom in chest-deep water',
+        'Wearing a PFD, sideways entry into deep water; tread 15 sec.; swim/kick 5 m',
+        'Front float; roll to back; swim 5 m',
+        'Glide on side 3 m',
+        'Flutter kick on side 5 m',
+        'Front crawl 5 m wearing PFD',
+        'Water Smart message: Within Arms’ Reach',
+        ...(i >= 4 ? ['Back float; roll to front; swim 3 m'] : []),
+        ...(i >= 6 ? ['Breaststroke arms drill 5 m'] : [])
+      ],
+      notes: '',
+      aiDrills: [],
+    })),
+    swimmer1: Array.from({ length: 10 }, (_, i) => ({
+      week: i + 1,
+      skills: [
+        'Enter and exit shallow water',
+        'Hold breath underwater 5 sec.',
+        'Submerge and exhale 5 times',
+        'Open eyes underwater',
+        'Float on front 5 sec.',
+        'Float on back 5 sec.',
+        'Glide on front 3 m',
+        'Glide on back 3 m',
+        'Water Smart message: Swim with a Buddy',
+      ],
+      notes: '',
+      aiDrills: [],
+    })),
+    swimmer2: Array.from({ length: 10 }, (_, i) => ({
+      week: i + 1,
+      skills: [
+        'Recover object from bottom in chest-deep water',
+        'Flutter kick on front 10 m',
+        'Flutter kick on back 10 m',
+        'Flutter kick on side 10 m',
+        'Front crawl 10 m',
+        'Back crawl 10 m',
+        'Interval training: 4 × 5 m flutter kick with 20 sec. rests',
+      ],
+      notes: '',
+      aiDrills: [],
+    })),
+    swimmer3: Array.from({ length: 10 }, (_, i) => ({
+      week: i + 1,
+      skills: [
+        'Handstand in shallow water',
+        'Flutter kick on back 5 m; reverse direction and flutter kick on front 5 m',
+        'Flutter kick on front 5 m; reverse direction and flutter kick on back 5 m',
+        'Whip kick on back 10 m',
+        'Front crawl 15 m',
+        'Back crawl 15 m',
+      ],
+      notes: '',
+      aiDrills: [],
+    })),
+    swimmer4: Array.from({ length: 10 }, (_, i) => ({
+      week: i + 1,
+      skills: [
+        'Swim underwater 5 m',
+        'Whip kick on front 15 m',
+        'Breaststroke arms drill 15 m',
+        'Front crawl 25 m',
+        'Back crawl 25 m',
+        'Sprint front crawl 25 m',
+      ],
+      notes: '',
+      aiDrills: [],
+    })),
+    swimmer5: Array.from({ length: 10 }, (_, i) => ({
+      week: i + 1,
+      skills: [
+        'Tread water 1 min.',
+        'Stationary eggbeater kick 30 sec.',
+        'Breaststroke 25 m',
+        'Front crawl 50 m',
+        'Back crawl 50 m',
+        'Head-up front crawl 10 m',
+      ],
+      notes: '',
+      aiDrills: [],
+    })),
+    swimmer6: Array.from({ length: 10 }, (_, i) => ({
+      week: i + 1,
+      skills: [
+        'Swim underwater 10 m to recover object',
+        'Eggbeater kick on back 15 m',
+        'Breaststroke 50 m',
+        'Front crawl 100 m',
+        'Back crawl 100 m',
+        'Head-up swim 25 m',
+      ],
+      notes: '',
+      aiDrills: [],
+    })),
+  };
+
   useEffect(() => {
     try {
       const saved = localStorage.getItem('swimLessonData');
@@ -17,19 +244,17 @@ export default function App() {
       } else {
         setLessonData(initialLessonData);
       }
-    } catch (error) {
-      console.error('Failed to load ', error);
+    } catch (e) {
       setLessonData(initialLessonData);
     }
   }, []);
 
-  // Save to localStorage
   useEffect(() => {
     if (Object.keys(lessonData).length > 0) {
       try {
         localStorage.setItem('swimLessonData', JSON.stringify(lessonData));
-      } catch (error) {
-        console.error('Failed to save ', error);
+      } catch (e) {
+        console.error('Failed to save to localStorage');
       }
     }
   }, [lessonData]);
@@ -95,7 +320,7 @@ export default function App() {
 
   const handleAddLesson = () => {
     if (currentLessons.length >= 10) {
-      alert('Max 10 lessons');
+      alert('Maximum 10 lessons allowed.');
       return;
     }
     const newWeek = currentLessons.length + 1;
@@ -130,7 +355,7 @@ export default function App() {
 
   const handleRemoveSkill = (skillIndex) => {
     if (editingSkills.length <= 1) {
-      alert('At least one skill required');
+      alert('A lesson must have at least one skill.');
       return;
     }
     setEditingSkills(editingSkills.filter((_, i) => i !== skillIndex));
@@ -147,25 +372,16 @@ export default function App() {
   const handleAIGenerate = async (lessonIndex) => {
     const lesson = currentLessons[lessonIndex];
     const levelName = levelGroups[selectedGroup].levels[selectedLevel];
-    const mustSees = [
-      'Always supervise children around water',
-      'Use PFDs when appropriate',
-      'Teach Water Smart messages each class',
-      'Encourage fun and confidence over perfection',
-      'Progress skills gradually based on readiness'
-    ];
 
     setIsLoading(true);
     try {
       const response = await fetch('/api/generate-drill', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ level: levelName, skills: lesson.skills, mustSees }),
+        body: JSON.stringify({ level: levelName, skills: lesson.skills }),
       });
 
       const data = await response.json();
-      if (data.error) throw new Error(data.error);
-
       const updatedLessons = currentLessons.map((l, i) =>
         i === lessonIndex ? { ...l, aiDrills: data.drills } : l
       );
@@ -397,173 +613,3 @@ export default function App() {
     </div>
   );
 }
-
-// Full initial lesson data for all levels
-const initialLessonData = {
-  parentAndTot1: Array.from({ length: 10 }, (_, i) => ({
-    week: i + 1,
-    skills: [
-      'Enter and exit the water safely with tot',
-      'Hold tot on front, eye contact',
-      'Hold tot on back, head and back support',
-      'Front float (face out) – assisted',
-      'Back float (assisted)',
-      'Arms: splashing, reaching, paddling, on front and back',
-      'Legs: tickling, splashing, kicking, on front and back',
-      'Water Smart message: Swim to Survive',
-    ],
-    notes: '',
-    aiDrills: [],
-  })),
-  parentAndTot2: Array.from({ length: 10 }, (_, i) => ({
-    week: i + 1,
-    skills: [
-      'Entry from sitting position (assisted)',
-      'Exit the water (assisted)',
-      'Blow bubbles on and in water',
-      'Face wet and in water',
-      'Front float (face in) – assisted',
-      'Back float (assisted)',
-      'Kicking on front (assisted)',
-      'Kicking on back (assisted)',
-      'Water Smart message: Within Arms’ Reach',
-      'Water Smart message: Wear a Lifejacket',
-    ],
-    notes: '',
-    aiDrills: [],
-  })),
-  parentAndTot3: Array.from({ length: 10 }, (_, i) => ({
-    week: i + 1,
-    skills: [
-      'Entry and submerge from sitting position (assisted)',
-      'Exit the water (unassisted)',
-      'Hold breath underwater (assisted)',
-      'Attempt to open eyes underwater',
-      'Attempt to recover object from bottom',
-      'Standing jump entry, return to edge (assisted)',
-      'Front “starfish” float (assisted)',
-      'Back “starfish” float (assisted)',
-      'Front “pencil” float (assisted)',
-      'Back “pencil” float (assisted)',
-      'Kicking on front (assisted)',
-      'Kicking on back (assisted)',
-      'Underwater passes',
-      'Water Smart message: Swim to Survive',
-    ],
-    notes: '',
-    aiDrills: [],
-  })),
-  preschool1: Array.from({ length: 10 }, (_, i) => ({
-    week: i + 1,
-    skills: [
-      'Enter and exit shallow water (assisted)',
-      'Face in water',
-      'Blow bubbles in water',
-      'Float on front (3 sec.) assisted',
-      'Float on back (3 sec.) assisted',
-      'Safe movement in shallow water wearing PFD',
-      'Glide on front (3 m) assisted',
-      'Glide on back (3 m) assisted',
-      'Water Smart message: Within Arms’ Reach',
-    ],
-    notes: '',
-    aiDrills: [],
-  })),
-  preschool2: Array.from({ length: 10 }, (_, i) => ({
-    week: i + 1,
-    skills: [
-      'Enter and exit shallow water wearing PFD',
-      'Submerge',
-      'Float on front (3 sec.) wearing PFD or with buoyant aid',
-      'Float on back (3 sec.) wearing PFD or with buoyant aid',
-      'Glide on front (3 m) wearing PFD or with buoyant aid',
-      'Glide on back (3 m) wearing PFD or with buoyant aid',
-      'Flutter kick on back with buoyant aid 5 m',
-      'Water Smart message: Wear a Lifejacket',
-    ],
-    notes: '',
-    aiDrills: [],
-  })),
-  swimmer1: Array.from({ length: 10 }, (_, i) => ({
-    week: i + 1,
-    skills: [
-      'Enter and exit shallow water',
-      'Hold breath underwater 5 sec.',
-      'Submerge and exhale 5 times',
-      'Open eyes underwater',
-      'Float on front 5 sec.',
-      'Float on back 5 sec.',
-      'Glide on front 3 m',
-      'Glide on back 3 m',
-      'Water Smart message: Swim with a Buddy',
-    ],
-    notes: '',
-    aiDrills: [],
-  })),
-  swimmer2: Array.from({ length: 10 }, (_, i) => ({
-    week: i + 1,
-    skills: [
-      'Recover object from bottom in chest-deep water',
-      'Flutter kick on front 10 m',
-      'Flutter kick on back 10 m',
-      'Flutter kick on side 10 m',
-      'Front crawl 10 m',
-      'Back crawl 10 m',
-      'Interval training: 4 × 5 m flutter kick with 20 sec. rests',
-    ],
-    notes: '',
-    aiDrills: [],
-  })),
-  swimmer3: Array.from({ length: 10 }, (_, i) => ({
-    week: i + 1,
-    skills: [
-      'Handstand in shallow water',
-      'Flutter kick on back 5 m; reverse direction and flutter kick on front 5 m',
-      'Flutter kick on front 5 m; reverse direction and flutter kick on back 5 m',
-      'Whip kick on back 10 m',
-      'Front crawl 15 m',
-      'Back crawl 15 m',
-    ],
-    notes: '',
-    aiDrills: [],
-  })),
-  swimmer4: Array.from({ length: 10 }, (_, i) => ({
-    week: i + 1,
-    skills: [
-      'Swim underwater 5 m',
-      'Whip kick on front 15 m',
-      'Breaststroke arms drill 15 m',
-      'Front crawl 25 m',
-      'Back crawl 25 m',
-      'Sprint front crawl 25 m',
-    ],
-    notes: '',
-    aiDrills: [],
-  })),
-  swimmer5: Array.from({ length: 10 }, (_, i) => ({
-    week: i + 1,
-    skills: [
-      'Tread water 1 min.',
-      'Stationary eggbeater kick 30 sec.',
-      'Breaststroke 25 m',
-      'Front crawl 50 m',
-      'Back crawl 50 m',
-      'Head-up front crawl 10 m',
-    ],
-    notes: '',
-    aiDrills: [],
-  })),
-  swimmer6: Array.from({ length: 10 }, (_, i) => ({
-    week: i + 1,
-    skills: [
-      'Swim underwater 10 m to recover object',
-      'Eggbeater kick on back 15 m',
-      'Breaststroke 50 m',
-      'Front crawl 100 m',
-      'Back crawl 100 m',
-      'Head-up swim 25 m',
-    ],
-    notes: '',
-    aiDrills: [],
-  })),
-};
