@@ -1,8 +1,20 @@
 import { useState, useEffect } from 'react';
 
 export default function App() {
-  const [selectedGroup, setSelectedGroup] = useState('parentAndTot');
-  const [selectedLevel, setSelectedLevel] = useState('parentAndTot1');
+  const [selectedGroup, setSelectedGroup] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('selectedGroup') || 'parentAndTot';
+    }
+    return 'parentAndTot';
+  });
+
+  const [selectedLevel, setSelectedLevel] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('selectedLevel') || 'parentAndTot1';
+    }
+    return 'parentAndTot1';
+  });
+
   const [isLoading, setIsLoading] = useState(false);
   const [editingLessonIndex, setEditingLessonIndex] = useState(null);
   const [editingSkills, setEditingSkills] = useState([]);
@@ -45,7 +57,7 @@ export default function App() {
       { week: 3, skills: ['Entry and submerge from sitting position (assisted)', 'Exit the water (unassisted)', 'Hold breath underwater (assisted)', 'Attempt to recover object from bottom', 'Standing jump entry, return to edge (assisted)', 'Front “starfish” float (assisted)', 'Back “starfish” float (assisted)', 'Front “pencil” float (assisted)', 'Back “pencil” float (assisted)', 'Kicking on front (assisted)', 'Kicking on back (assisted)', 'Underwater passes', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
       { week: 4, skills: ['Entry and submerge from sitting position (assisted)', 'Exit the water (unassisted)', 'Hold breath underwater (assisted)', 'Attempt to recover object from bottom', 'Standing jump entry, return to edge (assisted)', 'Front “starfish” float (assisted)', 'Back “starfish” float (assisted)', 'Front “pencil” float (assisted)', 'Back “pencil” float (assisted)', 'Kicking on front (assisted)', 'Kicking on back (assisted)', 'Underwater passes', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
       { week: 5, skills: ['Jump entry (assisted)', 'Exit the water (unassisted)', 'Hold breath underwater (assisted)', 'Attempt to open eyes underwater', 'Attempt to recover object from bottom', 'Front “starfish” float (assisted)', 'Back “starfish” float (assisted)', 'Front “pencil” float (assisted)', 'Back “pencil” float (assisted)', 'Kicking on front (assisted)', 'Kicking on back (assisted)', 'Underwater passes', 'Water Smart message: Swim to Survive'], notes: '', aiDrills: [] },
-      { week: 6, skills: ['Jump entry (assisted)', 'Entry and submerge from sitting position (assisted)', 'Exit the water (unassisted)', 'Attempt to recover object from bottom', 'Standing jump entry, return to edge (assisted)', 'Jump entry and float wearing PFD (assisted)', 'Front “starfish” float (assisted)', 'Back “starfish” float (assisted)', 'Front “pencil” float (assisted)', 'Back “pencil” float (assisted)', 'Kicking on front (assisted)', 'Kicking on back (assisted)', 'Underwater passes', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
+      { week: 6, skills: ['Jump entry (assisted)', 'Entry and submerge from sitting position (assisted)', 'Exit the water (unassisted)', 'Attempt to recover object from bottom', 'Standing jump entry, return to edge (assisted)', 'Jump entry and float wearing PFD (assisted)', 'Front “starfish” float (assisted)', 'Back “starfish” float (assisted)', 'Front “pencil” float (assisted)', 'Back “pencil” float (assisted)', 'Kicking on front (assisted)', 'Kicking on back (assisted)', 'Underwater passes', 'Water Smart message: Wear a Lifejacket', 'Water Smart message: Swim to Survive'], notes: '', aiDrills: [] },
       { week: 7, skills: ['Jump entry (assisted)', 'Entry and submerge from sitting position (assisted)', 'Exit the water (unassisted)', 'Attempt to recover object from bottom', 'Jump entry and float wearing PFD (assisted)', 'Front “starfish” float (assisted)', 'Back “starfish” float (assisted)', 'Front “pencil” float (assisted)', 'Back “pencil” float (assisted)', 'Kicking on front (assisted)', 'Kicking on back (assisted)', 'Underwater passes', 'Water Smart message: Within Arms’ Reach'], notes: '', aiDrills: [] },
       { week: 8, skills: ['Jump entry (assisted)', 'Entry and submerge from sitting position (assisted)', 'Exit the water (unassisted)', 'Attempt to recover object from bottom', 'Jump entry and float wearing PFD (assisted)', 'Front “pencil” float (assisted)', 'Back “pencil” float (assisted)', 'Kicking on front (assisted)', 'Kicking on back (assisted)', 'Underwater passes', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
       { week: 9, skills: ['Jump entry (assisted)', 'Entry and submerge from sitting position (assisted)', 'Exit the water (unassisted)', 'Attempt to recover object from bottom', 'Standing jump entry, return to edge (assisted)', 'Jump entry and float wearing PFD (assisted)', 'Front “pencil” float (assisted)', 'Back “pencil” float (assisted)', 'Kicking on front (assisted)', 'Kicking on back (assisted)', 'Underwater passes', 'Water Smart message: Within Arms’ Reach', 'Water Smart message: Wear a Lifejacket'], notes: '', aiDrills: [] },
@@ -196,20 +208,14 @@ export default function App() {
     ],
   };
 
-  // Load from localStorage without aiDrills
+  // Load from localStorage
   useEffect(() => {
     try {
       const saved = localStorage.getItem('swimLessonData');
       if (saved) {
         const parsed = JSON.parse(saved);
-        const restored = {};
-        for (const level in parsed) {
-          restored[level] = parsed[level].map(lesson => ({
-            ...lesson,
-            aiDrills: [] // Always start fresh
-          }));
-        }
-        setLessonData(restored);
+        // Restore all data including aiDrills
+        setLessonData(parsed);
       } else {
         setLessonData(initialLessonData);
       }
@@ -218,14 +224,22 @@ export default function App() {
     }
   }, []);
 
-  // Save only non-ai data to localStorage
+  // Save full lessonData (with aiDrills) to localStorage
   useEffect(() => {
-    const dataToSave = {};
-    for (const level in lessonData) {
-      dataToSave[level] = lessonData[level].map(({ aiDrills, ...rest }) => rest);
+    if (Object.keys(lessonData).length > 0) {
+      try {
+        localStorage.setItem('swimLessonData', JSON.stringify(lessonData));
+      } catch (e) {
+        console.error('Failed to save ', e);
+      }
     }
-    localStorage.setItem('swimLessonData', JSON.stringify(dataToSave));
   }, [lessonData]);
+
+  // Save selected group & level
+  useEffect(() => {
+    localStorage.setItem('selectedGroup', selectedGroup);
+    localStorage.setItem('selectedLevel', selectedLevel);
+  }, [selectedGroup, selectedLevel]);
 
   if (Object.keys(lessonData).length === 0) {
     return <div className="p-6 text-center">Loading...</div>;
@@ -362,6 +376,16 @@ export default function App() {
     }
   };
 
+  // New: Save AI suggestions permanently
+  const handleSaveAllAIDrills = () => {
+    try {
+      localStorage.setItem('swimLessonData', JSON.stringify(lessonData));
+      alert('✅ AI suggestions saved! They will persist after refresh.');
+    } catch (e) {
+      alert('❌ Failed to save.');
+    }
+  };
+
   const handlePrintLesson = (lessonIndex) => {
     const lesson = currentLessons[lessonIndex];
     let content = `Lesson ${lesson.week}\n\nSkills:\n`;
@@ -479,6 +503,12 @@ export default function App() {
             className="bg-gray-100 text-gray-700 px-4 py-2 rounded hover:bg-gray-200 disabled:opacity-50"
           >
             + Add Lesson
+          </button>
+          <button
+            onClick={handleSaveAllAIDrills}
+            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 flex items-center gap-2"
+          >
+            💾 Save AI Drills
           </button>
         </div>
 
